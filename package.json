@@ -23,6 +23,7 @@
   "homepage": "https://github.com/EnricoMassoneDeltatre/single-linked-list-implementation#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^6.6.0",
     "jest": "^24.9.0"
   }
 }

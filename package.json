@@ -1,0 +1,24 @@
+{
+  "name": "single-linked-list-implementation",
+  "version": "1.0.0",
+  "description": "Javascript implementation for single linked list",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnricoMassoneDeltatre/single-linked-list-implementation.git"
+  },
+  "keywords": [
+    "Javascript",
+    "ES6",
+    "single-linked-list"
+  ],
+  "author": "Enrico Massone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EnricoMassoneDeltatre/single-linked-list-implementation/issues"
+  },
+  "homepage": "https://github.com/EnricoMassoneDeltatre/single-linked-list-implementation#readme"
+}

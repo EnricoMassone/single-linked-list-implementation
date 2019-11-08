@@ -375,3 +375,25 @@ test("It is possible to pop from list with two items", () => {
 
   assert.strictEqual(target.get(0), "test");
 });
+
+test("It is possible to pop from list with more than two items", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("test");
+  target.push(13);
+  target.push("foo");
+
+  // ACT
+  const result = target.pop();
+
+  // ASSERT
+  assert.strictEqual(result, "foo");
+
+  assert.strictEqual(target.length, 2);
+
+  assert.strictEqual(target.head.value, "test");
+  assert.strictEqual(target.tail.value, 13);
+
+  assert.strictEqual(target.get(0), "test");
+  assert.strictEqual(target.get(1), 13);
+});

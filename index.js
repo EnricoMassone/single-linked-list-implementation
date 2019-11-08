@@ -68,6 +68,10 @@ class LinkedList {
 
     this.length++;
   }
+
+  delete(index) {
+    throw new Error("Not implemented");
+  }
 }
 
 exports.Node = Node;

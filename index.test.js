@@ -124,3 +124,21 @@ test("Get returns undefined when index is greater than list length", () => {
   // ASSERT
   assert.isUndefined(result);
 });
+
+test("Get throws TypeError when index is not an integer", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+
+  // ACT
+  try {
+    target.get("not an integer");
+  } catch (error) {
+    assert.exists(error);
+    assert.instanceOf(error, TypeError);
+    return;
+  }
+
+  throw new Error("An exception was expected");
+});

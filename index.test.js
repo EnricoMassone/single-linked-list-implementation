@@ -21,3 +21,67 @@ test("It is possible to instantiate new LinkedList", () => {
   assert.isNull(result.head);
   assert.isNull(result.tail);
 });
+
+test("It is possible to push a value to an empty list", () => {
+  // ARRANGE
+  const target = new LinkedList();
+
+  // ACT
+  target.push("test");
+
+  // ASSERT
+  assert.strictEqual(1, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+
+  assert.strictEqual(target.head.value, "test");
+  assert.strictEqual(target.tail.value, "test");
+  assert.strictEqual(target.head, target.tail);
+
+  assert.strictEqual(target.get(0), "test");
+});
+
+test("It is possible to push a value to list containing one item", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push(13);
+
+  // ACT
+  target.push("test");
+
+  // ASSERT
+  assert.strictEqual(2, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+
+  assert.strictEqual(target.head.value, 13);
+  assert.strictEqual(target.tail.value, "test");
+
+  assert.strictEqual(target.get(0), 13);
+  assert.strictEqual(target.get(1), "test");
+});
+
+test("It is possible to push a value to list containing more than one item", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push(13);
+  target.push(true);
+
+  // ACT
+  target.push("test");
+
+  // ASSERT
+  assert.strictEqual(3, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+
+  assert.strictEqual(target.head.value, 13);
+  assert.strictEqual(target.tail.value, "test");
+
+  assert.strictEqual(target.get(0), 13);
+  assert.strictEqual(target.get(1), true);
+  assert.strictEqual(target.get(2), "test");
+});

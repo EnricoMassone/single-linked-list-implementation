@@ -18,11 +18,13 @@ class LinkedList {
     }
 
     if (index < 0 || index >= this.length) {
-      return null;
+      return undefined;
     }
 
     const answer = this._find(index, this._testByIndex);
-    return answer;
+    return answer === null
+      ? undefined
+      : answer.value;
   }
 
   _find(searchedValue, testPredicate) {
@@ -50,6 +52,10 @@ class LinkedList {
 
   _testByIndex(searchedValue, _, currentIndex, __) {
     return searchedValue === currentIndex;
+  }
+
+  push(value) {
+    throw new Error("Not implemented yet");
   }
 }
 

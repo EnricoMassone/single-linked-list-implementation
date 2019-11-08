@@ -85,3 +85,42 @@ test("It is possible to push a value to list containing more than one item", () 
   assert.strictEqual(target.get(1), true);
   assert.strictEqual(target.get(2), "test");
 });
+
+test("Get returns undefined when index is less than zero", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+
+  // ACT
+  const result = target.get(-1);
+
+  // ASSERT
+  assert.isUndefined(result);
+});
+
+test("Get returns undefined when index equals list length", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+
+  // ACT
+  const result = target.get(2);
+
+  // ASSERT
+  assert.isUndefined(result);
+});
+
+test("Get returns undefined when index is greater than list length", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+
+  // ACT
+  const result = target.get(3);
+
+  // ASSERT
+  assert.isUndefined(result);
+});

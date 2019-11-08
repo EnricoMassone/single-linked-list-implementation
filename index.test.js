@@ -143,6 +143,23 @@ test("Get throws TypeError when index is not an integer", () => {
   throw new Error("An exception was expected");
 });
 
+test("It is possible to delete the only node of a single item list", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+
+  // ACT
+  const result = target.delete(0);
+
+  // ASSERT
+  assert.strictEqual("foo", result);
+
+  assert.strictEqual(0, target.length);
+
+  assert.isNull(target.head);
+  assert.isNull(target.tail);
+});
+
 test("It is possible to delete the list head", () => {
   // ARRANGE
   const target = new LinkedList();

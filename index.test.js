@@ -326,3 +326,52 @@ test("Delete throws TypeError when index is not an integer", () => {
 
   throw new Error("An exception was expected");
 });
+
+test("Pop returns undefined when list is empty", () => {
+  // ARRANGE
+  const target = new LinkedList();
+
+  // ACT
+  const result = target.pop();
+
+  // ASSERT
+  assert.isUndefined(result);
+});
+
+test("It is possible to pop from list with one item", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("test");
+
+  // ACT
+  const result = target.pop();
+
+  // ASSERT
+  assert.strictEqual(result, "test");
+
+  assert.strictEqual(target.length, 0);
+
+  assert.isNull(target.head);
+  assert.isNull(target.tail);
+});
+
+test("It is possible to pop from list with two items", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("test");
+  target.push(13);
+
+  // ACT
+  const result = target.pop();
+
+  // ASSERT
+  assert.strictEqual(result, 13);
+
+  assert.strictEqual(target.length, 1);
+
+  assert.strictEqual(target.head.value, "test");
+  assert.strictEqual(target.tail.value, "test");
+  assert.strictEqual(target.head, target.tail);
+
+  assert.strictEqual(target.get(0), "test");
+});

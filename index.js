@@ -108,6 +108,14 @@ class LinkedList {
       return nodeToBeDeleted.value;
     }
   }
+
+  pop() {
+    if (this.length === 0) {
+      return undefined;
+    }
+
+    return this.delete(this.length - 1);
+  }
 }
 
 exports.Node = Node;

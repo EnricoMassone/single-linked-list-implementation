@@ -308,3 +308,21 @@ test("Delete returns undefined when index is greater than list length", () => {
   assert.strictEqual(target.get(1), "bar");
   assert.strictEqual(target.get(2), "buzz");
 });
+
+test("Delete throws TypeError when index is not an integer", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+
+  // ACT
+  try {
+    target.delete("not an integer");
+  } catch (error) {
+    assert.exists(error);
+    assert.instanceOf(error, TypeError);
+    return;
+  }
+
+  throw new Error("An exception was expected");
+});

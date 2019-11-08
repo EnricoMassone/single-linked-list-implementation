@@ -55,7 +55,18 @@ class LinkedList {
   }
 
   push(value) {
-    throw new Error("Not implemented yet");
+    const node = new Node(value);
+
+    if (this.length === 0) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      const currentTail = this.tail;
+      currentTail.next = node;
+      this.tail = node;
+    }
+
+    this.length++;
   }
 }
 

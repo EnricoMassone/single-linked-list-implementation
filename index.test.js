@@ -233,3 +233,78 @@ test("It is possible to delete an item in the middle of the list", () => {
   assert.strictEqual(target.get(1), "buzz");
   assert.strictEqual(target.get(2), 13);
 });
+
+test("Delete returns undefined when index is less than 0", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+  target.push("buzz");
+
+  // ACT
+  const result = target.delete(-1);
+
+  // ASSERT
+  assert.isUndefined(result);
+
+  assert.strictEqual(3, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+  assert.strictEqual(target.head.value, "foo");
+  assert.strictEqual(target.tail.value, "buzz");
+
+  assert.strictEqual(target.get(0), "foo");
+  assert.strictEqual(target.get(1), "bar");
+  assert.strictEqual(target.get(2), "buzz");
+});
+
+test("Delete returns undefined when index equals list length", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+  target.push("buzz");
+
+  // ACT
+  const result = target.delete(3);
+
+  // ASSERT
+  assert.isUndefined(result);
+
+  assert.strictEqual(3, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+  assert.strictEqual(target.head.value, "foo");
+  assert.strictEqual(target.tail.value, "buzz");
+
+  assert.strictEqual(target.get(0), "foo");
+  assert.strictEqual(target.get(1), "bar");
+  assert.strictEqual(target.get(2), "buzz");
+});
+
+test("Delete returns undefined when index is greater than list length", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+  target.push("buzz");
+
+  // ACT
+  const result = target.delete(4);
+
+  // ASSERT
+  assert.isUndefined(result);
+
+  assert.strictEqual(3, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+  assert.strictEqual(target.head.value, "foo");
+  assert.strictEqual(target.tail.value, "buzz");
+
+  assert.strictEqual(target.get(0), "foo");
+  assert.strictEqual(target.get(1), "bar");
+  assert.strictEqual(target.get(2), "buzz");
+});

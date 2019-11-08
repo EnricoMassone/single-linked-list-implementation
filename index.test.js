@@ -142,3 +142,77 @@ test("Get throws TypeError when index is not an integer", () => {
 
   throw new Error("An exception was expected");
 });
+
+test("It is possible to delete the list head", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+  target.push("buzz");
+
+  // ACT
+  const result = target.delete(0);
+
+  // ASSERT
+  assert.strictEqual("foo", result);
+
+  assert.strictEqual(2, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+  assert.strictEqual(target.head.value, "bar");
+  assert.strictEqual(target.head.value, "buzz");
+
+  assert.strictEqual(target.get(0), "bar");
+  assert.strictEqual(target.get(1), "buzz");
+});
+
+test("It is possible to delete the list tail", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+  target.push("buzz");
+
+  // ACT
+  const result = target.delete(0);
+
+  // ASSERT
+  assert.strictEqual("buzz", result);
+
+  assert.strictEqual(2, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+  assert.strictEqual(target.head.value, "foo");
+  assert.strictEqual(target.head.value, "bar");
+
+  assert.strictEqual(target.get(0), "foo");
+  assert.strictEqual(target.get(1), "bar");
+});
+
+test("It is possible to delete an item in the middle of the list", () => {
+  // ARRANGE
+  const target = new LinkedList();
+  target.push("foo");
+  target.push("bar");
+  target.push("buzz");
+  target.push(13);
+
+  // ACT
+  const result = target.delete(1);
+
+  // ASSERT
+  assert.strictEqual("bar", result);
+
+  assert.strictEqual(3, target.length);
+
+  assert.exists(target.head);
+  assert.exists(target.tail);
+  assert.strictEqual(target.head.value, "foo");
+  assert.strictEqual(target.head.value, 13);
+
+  assert.strictEqual(target.get(0), "foo");
+  assert.strictEqual(target.get(1), "buzz");
+  assert.strictEqual(target.get(2), 13);
+});

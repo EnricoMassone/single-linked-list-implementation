@@ -70,7 +70,43 @@ class LinkedList {
   }
 
   delete(index) {
-    throw new Error("Not implemented");
+    if (!Number.isInteger(index)) {
+      throw new TypeError("Index must be an integer number");
+    }
+
+    if (index < 0 || index >= this.length) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      const currentHead = this.head;
+
+      if (currentHead.next === null) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = currentHead.next;
+      }
+
+      this.length--;
+
+      return currentHead.value;
+    } else {
+      const nodeBefore = this._find(index - 1, this._testByIndex);
+      const nodeToBeDeleted = nodeBefore.next;
+      const nodeAfter = nodeToBeDeleted.next;
+
+      if (nodeAfter === null) {
+        nodeBefore.next = null;
+        this.tail = nodeBefore;
+      } else {
+        nodeBefore.next = nodeAfter;
+      }
+
+      this.length--;
+
+      return nodeToBeDeleted.value;
+    }
   }
 }
 

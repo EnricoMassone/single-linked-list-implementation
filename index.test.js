@@ -178,7 +178,7 @@ test("It is possible to delete the list head", () => {
   assert.exists(target.head);
   assert.exists(target.tail);
   assert.strictEqual(target.head.value, "bar");
-  assert.strictEqual(target.head.value, "buzz");
+  assert.strictEqual(target.tail.value, "buzz");
 
   assert.strictEqual(target.get(0), "bar");
   assert.strictEqual(target.get(1), "buzz");
@@ -192,7 +192,7 @@ test("It is possible to delete the list tail", () => {
   target.push("buzz");
 
   // ACT
-  const result = target.delete(0);
+  const result = target.delete(2);
 
   // ASSERT
   assert.strictEqual("buzz", result);
@@ -202,7 +202,7 @@ test("It is possible to delete the list tail", () => {
   assert.exists(target.head);
   assert.exists(target.tail);
   assert.strictEqual(target.head.value, "foo");
-  assert.strictEqual(target.head.value, "bar");
+  assert.strictEqual(target.tail.value, "bar");
 
   assert.strictEqual(target.get(0), "foo");
   assert.strictEqual(target.get(1), "bar");
@@ -227,7 +227,7 @@ test("It is possible to delete an item in the middle of the list", () => {
   assert.exists(target.head);
   assert.exists(target.tail);
   assert.strictEqual(target.head.value, "foo");
-  assert.strictEqual(target.head.value, 13);
+  assert.strictEqual(target.tail.value, 13);
 
   assert.strictEqual(target.get(0), "foo");
   assert.strictEqual(target.get(1), "buzz");
